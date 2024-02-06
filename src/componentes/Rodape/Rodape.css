@@ -1,0 +1,25 @@
+.footer {
+    background: #29377e;
+    color: #FFF;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer ul li {
+    display: inline-block;
+    margin-right: 32px;
+}
+
+.footer ul li:last-child {
+    margin-right: 0;
+}
+
+.cs2logo{
+    width: 20%;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+}

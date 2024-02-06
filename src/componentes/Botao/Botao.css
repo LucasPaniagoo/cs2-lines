@@ -1,0 +1,20 @@
+.btn{
+    border-radius: 10px;
+    background-color: #29377e;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 32px;
+    border: none;
+    cursor: pointer;
+    margin: 32px 0;
+    align-items: center;
+}
+.btn:hover{
+    color: #95FFD4;
+}
+.centraliza{
+    display: flex;
+    justify-content: center;
+
+}
