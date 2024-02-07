@@ -10,13 +10,15 @@ const Time = (props) =>
         <section className='time' style={cssFundo}>
             <h3 style={cssTitulo}>{props.nome}</h3>
             <div className='players'>
-                {props.players.map( player => <Player
-                key={player.nome}
+                {props.players.map( (player, indice) => {
+                return <Player
+                key={indice}
                 nome={player.nome}
                 funcao={player.funcao}
                 imagem={player.imagem}
                 corDeFundo={props.corPrimaria}
-                />)}
+                aoDeletar={props.aoDeletar}
+                />})}
             </div>
             
         </section>

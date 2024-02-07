@@ -55,16 +55,23 @@ function App() {
     setPlayers([...players, player]);
   }
 
+  function deletarPlayer()
+  {
+    console.log('Player deletado');
+  }
+
   return (
     <div className="App">
       <Banner />
       <Formulario times={times.map(time => time.nome)} cadastrarPlayer={player => adicionarPlayer(player)} />
-      {times.map(time => <Time 
-      key={time.nome} 
-      nome={time.nome} 
-      corPrimaria={time.corPrimaria} 
-      corSecundaria={time.corSecundaria}
-      players={players.filter(player => player.organizacao === time.nome)}
+      {times.map((time, indice) => 
+      <Time 
+        key={indice} 
+        nome={time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria}
+        players={players.filter(player => player.organizacao === time.nome)}
+        aoDeletar={deletarPlayer}
       /> )}
       <Rodape />
       
