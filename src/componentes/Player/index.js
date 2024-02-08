@@ -1,4 +1,6 @@
 import './Player.css';
+import { IoCloseCircle } from "react-icons/io5";
+
 
 const Player = ({nome, funcao, imagem, corDeFundo, aoDeletar}) => 
 {
@@ -6,7 +8,7 @@ const Player = ({nome, funcao, imagem, corDeFundo, aoDeletar}) =>
     return(
 
         <div className='colaborador'>
-            <div className='deletar'onClick={aoDeletar} >Deletar</div>
+            <IoCloseCircle size={25} className='deletar'onClick={aoDeletar}/>
             <div className='cabecalho' style={fundoDoCard}>
                 <img src={imagem} alt={nome} />
             </div>

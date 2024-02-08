@@ -1,23 +1,26 @@
 import Player from '../Player';
 import './Time.css';
+import hexToRgba from 'hex-to-rgba';
 
-const Time = (props) => 
+const Time = ({time, aoDeletar, mudarCor, players}) => 
 {
-    const cssFundo = {backgroundColor: props.corSecundaria};
-    const cssTitulo = {color: props.corPrimaria};
+    const cssFundo = {backgroundColor: hexToRgba(time.cor, 0.6)};
+    const cssBorder = {borderBottomColor: time.cor};
+
     return(
-        props.players.length > 0 &&
+        players.length > 0 &&
         <section className='time' style={cssFundo}>
-            <h3 style={cssTitulo}>{props.nome}</h3>
+            <input value={time.cor} onChange={evento => mudarCor(evento.target.value, time.id)} type="color" className='input-color' />
+            <h3 style={cssBorder}>{time.nome}</h3>
             <div className='players'>
-                {props.players.map( (player, indice) => {
+                {players.map( (player, indice) => {
                 return <Player
                 key={indice}
                 nome={player.nome}
                 funcao={player.funcao}
                 imagem={player.imagem}
-                corDeFundo={props.corPrimaria}
-                aoDeletar={props.aoDeletar}
+                corDeFundo={time.cor}
+                aoDeletar={aoDeletar}
                 />})}
             </div>
             

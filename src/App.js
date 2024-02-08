@@ -1,53 +1,54 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Banner from './componentes/Banner/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
 
 function App() {
-  const times = 
+  const [times, setTimes] = useState(
   [
     {
+      id: uuidv4(),
       nome: 'Fluxo',
-      corPrimaria: '#5f408c',
-      corSecundaria: '#E7DEF3'
+      cor: '#E7DEF3'
     },
     {
+      id: uuidv4(),
       nome: 'W7M',
-      corPrimaria: '#eb0045',
-      corSecundaria: 'FFEAF0'
+      cor: 'FFEAF0'
     },
     {
+      id: uuidv4(),
       nome: 'Red Canids',
-      corPrimaria: '#ee334d',
-      corSecundaria: '#FFEBEE'
+      cor: '#FFEBEE'
     },
     {
+      id: uuidv4(),
       nome: 'MIBR',
-      corPrimaria: '#2a4f7d',
-      corSecundaria: '#fffdfb'
+      cor: '#fffdfb'
     },
     {
+      id: uuidv4(),
       nome: 'Pain',
-      corPrimaria: '#000000',
-      corSecundaria: '#FFE0E5'
+      cor: '#FFE0E5'
     },
     {
+      id: uuidv4(),
       nome: 'Furia',
-      corPrimaria: '#f2e1b6',
-      corSecundaria: '#999DA6'
+      cor: '#999DA6'
     },
     {
+      id: uuidv4(),
       nome: 'Imperial',
-      corPrimaria: '#76c261',
-      corSecundaria: '#EBF6E8'
+      cor: '#EBF6E8'
     },
     {
+      id: uuidv4(),
       nome: 'Legacy',
-      corPrimaria: '#eed040',
-      corSecundaria: '#FFFFFF'
+      cor: '#FFFFFF'
     }
-  ]
+  ])
   const [players, setPlayers] = useState([]);
   const adicionarPlayer = (player) => 
   {
@@ -60,6 +61,17 @@ function App() {
     console.log('Player deletado');
   }
 
+  function mudarCorTime(cor, id) 
+  {
+    setTimes(times.map(time => 
+      {
+        if (time.id === id) 
+        {
+          time.cor = cor;
+        }
+        return time;
+    }))  
+  }
   return (
     <div className="App">
       <Banner />
@@ -67,11 +79,10 @@ function App() {
       {times.map((time, indice) => 
       <Time 
         key={indice} 
-        nome={time.nome} 
-        corPrimaria={time.corPrimaria} 
-        corSecundaria={time.corSecundaria}
+        time={time}
         players={players.filter(player => player.organizacao === time.nome)}
         aoDeletar={deletarPlayer}
+        mudarCor={mudarCorTime}
       /> )}
       <Rodape />
       
