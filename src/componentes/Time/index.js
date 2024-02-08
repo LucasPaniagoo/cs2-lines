@@ -6,6 +6,9 @@ const Time = ({time, aoDeletar, mudarCor, players}) =>
 {
     const cssFundo = {backgroundColor: hexToRgba(time.cor, 0.6)};
     const cssBorder = {borderBottomColor: time.cor};
+    const handleDelete = (playerId, index) => {
+        aoDeletar(playerId, index);
+    }
 
     return(
         players.length > 0 &&
@@ -16,11 +19,9 @@ const Time = ({time, aoDeletar, mudarCor, players}) =>
                 {players.map( (player, indice) => {
                 return <Player
                 key={indice}
-                nome={player.nome}
-                funcao={player.funcao}
-                imagem={player.imagem}
+                player={player}
                 corDeFundo={time.cor}
-                aoDeletar={aoDeletar}
+                aoDeletar={() => handleDelete(player.id, indice)}
                 />})}
             </div>
             

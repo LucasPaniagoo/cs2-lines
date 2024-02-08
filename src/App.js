@@ -6,7 +6,7 @@ import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
 
 function App() {
-  const [times, setTimes] = useState(
+  const [time, setTime] = useState(
   [
     {
       id: uuidv4(),
@@ -52,18 +52,18 @@ function App() {
   const [players, setPlayers] = useState([]);
   const adicionarPlayer = (player) => 
   {
-    console.log(player);
-    setPlayers([...players, player]);
+    const novoPlayer = {...player, id: uuidv4()};
+    setPlayers([...players, novoPlayer]);
   }
 
-  function deletarPlayer()
+  function deletarPlayer(playerId)
   {
-    console.log('Player deletado');
+    setPlayers(players => players.filter(player => player.id !== playerId));
   }
 
   function mudarCorTime(cor, id) 
   {
-    setTimes(times.map(time => 
+    setTime(time.map(time => 
       {
         if (time.id === id) 
         {
@@ -75,8 +75,8 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} cadastrarPlayer={player => adicionarPlayer(player)} />
-      {times.map((time, indice) => 
+      <Formulario times={time.map(time => time.nome)} cadastrarPlayer={player => adicionarPlayer(player)} />
+      {time.map((time, indice) => 
       <Time 
         key={indice} 
         time={time}
