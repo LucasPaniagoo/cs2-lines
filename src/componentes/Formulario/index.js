@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Botao from "../Botao";
-import CampoTexto from "../CampoTexto";
+import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import './Formulario.css';
 
@@ -11,6 +11,8 @@ const Formulario = (props) =>
     const [funcao, setFuncao] = useState('');
     const [imagem, setImagem] = useState('');
     const [organizacao, setOrganizacao] = useState('');
+    const [nomeTime, setNomeTime] = useState('');
+    const [corTime, setCorTime] = useState('');
 
     const aoSalvar = (evento) =>
     {
@@ -30,21 +32,21 @@ const Formulario = (props) =>
         <section className="formulario">
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para adicionar um player</h2>
-                <CampoTexto 
+                <Campo 
                     required={true} 
                     label="Nome" 
                     placeholder="Digite o nome do player" 
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
-                <CampoTexto 
+                <Campo 
                     required={true} 
                     label="Função" 
                     placeholder="Digite a função ingame do player" 
                     valor={funcao}
                     aoAlterado={valor => setFuncao(valor)}
                 />
-                <CampoTexto 
+                <Campo 
                     required={true} 
                     label="Imagem" 
                     placeholder="Digite o endereço da imagem" 
@@ -61,6 +63,31 @@ const Formulario = (props) =>
                 />
                 <Botao>
                     Criar Card
+                </Botao>
+            </form>
+            <form onSubmit={(evento) => 
+                {
+                    evento.preventDefault();
+                    props.cadastrarOrg({nome: nomeTime, cor: corTime});
+                }}>
+                <h2>Preencha os dados para adicionar uma nova organização</h2>
+                <Campo 
+                    required
+                    label="Nome" 
+                    placeholder="Digite o nome da organização" 
+                    valor={nomeTime}
+                    aoAlterado={valor => setNomeTime(valor)}
+                />
+                <Campo 
+                    required={true} 
+                    type="color"
+                    label="Cor" 
+                    placeholder="Digite a cor da Organização" 
+                    valor={corTime}
+                    aoAlterado={valor => setCorTime(valor)}
+                />
+                <Botao>
+                    Criar Nova Org
                 </Botao>
             </form>
         </section>

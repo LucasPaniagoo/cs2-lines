@@ -72,10 +72,19 @@ function App() {
         return time;
     }))  
   }
+  function cadastrarOrg(novaOrg) 
+  {
+    setTime([...time, {...novaOrg, id: uuidv4}]);
+  }
   return (
     <div className="App">
       <Banner />
-      <Formulario times={time.map(time => time.nome)} cadastrarPlayer={player => adicionarPlayer(player)} />
+      <Formulario 
+        cadastrarOrg={cadastrarOrg}
+        times={time.map(time => time.nome)} 
+        cadastrarPlayer={player => adicionarPlayer(player)} 
+        
+        />
       {time.map((time, indice) => 
       <Time 
         key={indice} 
