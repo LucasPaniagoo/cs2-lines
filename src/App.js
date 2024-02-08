@@ -50,6 +50,7 @@ function App() {
     }
   ])
   const [players, setPlayers] = useState([]);
+
   const adicionarPlayer = (player) => 
   {
     const novoPlayer = {...player, id: uuidv4()};
@@ -72,9 +73,22 @@ function App() {
         return time;
     }))  
   }
+
   function cadastrarOrg(novaOrg) 
   {
     setTime([...time, {...novaOrg, id: uuidv4}]);
+  }
+
+  function resolveFavoritar(id) 
+  {
+    setPlayers(players.map(player => 
+      {
+        if (player.id === id) 
+        {
+          player.mvp = !player.mvp;
+          return player;
+        }
+      }))
   }
   return (
     <div className="App">
@@ -92,6 +106,7 @@ function App() {
         players={players.filter(player => player.organizacao === time.nome)}
         aoDeletar={deletarPlayer}
         mudarCor={mudarCorTime}
+        aoFavoritar={resolveFavoritar}
       /> )}
       <Rodape />
       

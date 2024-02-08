@@ -2,7 +2,7 @@ import Player from '../Player';
 import './Time.css';
 import hexToRgba from 'hex-to-rgba';
 
-const Time = ({time, aoDeletar, mudarCor, players}) => 
+const Time = ({time, aoDeletar, mudarCor, players, aoFavoritar}) => 
 {
     const cssFundo = {backgroundColor: hexToRgba(time.cor, 0.6)};
     const cssBorder = {borderBottomColor: time.cor};
@@ -17,12 +17,16 @@ const Time = ({time, aoDeletar, mudarCor, players}) =>
             <h3 style={cssBorder}>{time.nome}</h3>
             <div className='players'>
                 {players.map( (player, indice) => {
-                return <Player
-                key={indice}
-                player={player}
-                corDeFundo={time.cor}
-                aoDeletar={() => handleDelete(player.id, indice)}
-                />})}
+                    return (
+                        <Player
+                            key={indice}
+                            player={player}
+                            corDeFundo={time.cor}
+                            aoDeletar={() => handleDelete(player.id, indice)}
+                            aoFavoritar={aoFavoritar}
+                        />
+                    );
+                })}
             </div>
             
         </section>
