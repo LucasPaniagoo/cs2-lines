@@ -11,42 +11,42 @@ function App() {
     {
       id: uuidv4(),
       nome: 'Fluxo',
-      cor: '#E7DEF3'
+      cor: '#5f408c'
     },
     {
       id: uuidv4(),
       nome: 'W7M',
-      cor: 'FFEAF0'
+      cor: '#eb0045'
     },
     {
       id: uuidv4(),
       nome: 'Red Canids',
-      cor: '#FFEBEE'
+      cor: '#ee334d'
     },
     {
       id: uuidv4(),
       nome: 'MIBR',
-      cor: '#fffdfb'
+      cor: '#2a4f7d'
     },
     {
       id: uuidv4(),
       nome: 'Pain',
-      cor: '#FFE0E5'
+      cor: '#000000'
     },
     {
       id: uuidv4(),
       nome: 'Furia',
-      cor: '#999DA6'
+      cor: '#f2e1b6'
     },
     {
       id: uuidv4(),
       nome: 'Imperial',
-      cor: '#EBF6E8'
+      cor: '#76c261'
     },
     {
       id: uuidv4(),
       nome: 'Legacy',
-      cor: '#FFFFFF'
+      cor: '#eed040'
     }
   ])
   const [players, setPlayers] = useState([]);
